@@ -52,39 +52,58 @@ SELECT
  GROUP BY
    BillingCountry, BillingCity
  ORDER By
- BillingCountry</sql><sql name="SQL 5*">/*
-Created by : Sina Matinrad
-Create Date : 07/31/2024
-Description : Subqueries | Gather data about all invoices tha are less than this average ?
-
+ BillingCountry</sql><sql name="SQL 5">/*
+Created by : Sina Matinrad
+Create Date : 07/31/2024
+Description : Subqueries | Gather data about all invoices tha are less than this average ?
+
+*/
+
+
+/*
+SELECT
+    round(AVG(TOTAL),2) AS [Average Total]
+    
+FROM
+   invoice
+   
+   */
+   
+   
+   
+   
+   
+   SELECT
+  InvoiceDate,
+  BillingAddress,
+  BillingCity,
+  total
+ FROM
+  Invoice
+ WHERE
+  total  &lt;
+ (SELECT 
+	avg(total)
+FROM 
+	      Invoice)
+ORDER by
+  total DESC</sql><sql name="SQL 6*">/*
+Created By : Sian Matinard
+Created Date : 08/01/2024
+Description:
+Subqueries in SELECT | How is each individuel city performing against tha gelobal average sales?
+ 
 */
 
-
-/*
 SELECT
-    round(AVG(TOTAL),2) AS [Average Total]
-    
-FROM
-   invoice
-   
-   */
-   
-   
-   
-   
-   
-   SELECT
-  InvoiceDate,
-  BillingAddress,
   BillingCity,
-  total
- FROM
-  Invoice
- WHERE
-  total  &lt;
- (SELECT 
-	avg(total)
-FROM 
-	      Invoice)
-ORDER by
-  total DESC</sql><current_tab id="3"/></tab_sql></sqlb_project>
+  AVg(Total),
+  ()
+  
+FROM
+   Invoice
+GROUP by
+   BillingCity
+ORDER BY
+   BillingCity
+   </sql><current_tab id="4"/></tab_sql></sqlb_project>
